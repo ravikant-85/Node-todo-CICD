@@ -2,7 +2,7 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     // In order to use PUT HTTP verb to edit item
     methodOverride = require('method-override'),
-    // Mitigate XSS using sanitizer
+    // Mitigate XSS using sanitizer //
     sanitizer = require('sanitizer'),
     app = express(),
     port = 8000
@@ -10,7 +10,8 @@ const express = require('express'),
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-// https: //github.com/expressjs/method-override#custom-logic
+// https: //github.com/expressjs/method-override#custom-logic //
+ravikant
 app.use(methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         // look in urlencoded POST bodies and delete it
@@ -23,7 +24,7 @@ app.use(methodOverride(function (req, res) {
 
 let todolist = [];
 
-/* The to do list and the form are displayed */
+//* The to do list and the form are displayed *//
 app.get('/todo', function (req, res) {
         res.render('todo.ejs', {
             todolist,
@@ -31,7 +32,7 @@ app.get('/todo', function (req, res) {
         });
     })
 
-    /* Adding an item to the to do list */
+    //* Adding an item to the to do list *//
     .post('/todo/add/', function (req, res) {
         // Escapes HTML special characters in attribute values as HTML entities
         let newTodo = sanitizer.escape(req.body.newtodo);
