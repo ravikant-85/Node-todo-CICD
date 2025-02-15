@@ -20,8 +20,8 @@ pipeline {
                     sh "echo '${DOCKER_HUB_PASS}' | docker login -u '${DOCKER_HUB_USER}' --password-stdin"
                     
                     // **Tag both 'latest' and 'v10'**
-                    sh "docker tag node-app:v10 ${DOCKER_HUB_USER}/node-app:latest"
-                    sh "docker tag node-app:v10 ${DOCKER_HUB_USER}/node-app:v12"
+                    sh "docker tag node-app:v12 ${DOCKER_HUB_USER}/node-app:latest"
+                    sh "docker tag node-app:v12 ${DOCKER_HUB_USER}/node-app:v12"
 
                     // **Push both 'latest' and 'v10' to DockerHub**
                     sh "docker push ${DOCKER_HUB_USER}/node-app:latest"
