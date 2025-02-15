@@ -2,6 +2,6 @@ version: '3.9'
 
 services:
   web:
-    image: "ravikant21/node-app:latest"
+    image: "ravikant21/node-app:v4"
     ports:
       - "8000:8081"
