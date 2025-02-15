@@ -18,8 +18,8 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "DockerHub", passwordVariable: "DOCKER_HUB_PASS", usernameVariable: "DOCKER_HUB_USER")]) {
                     sh "echo '${DOCKER_HUB_PASS}' | docker login -u '${DOCKER_HUB_USER}' --password-stdin"
-                    sh "docker tag node-app:v1 ${DOCKER_HUB_USER}/node-app:v2"
-                    sh "docker push ${DOCKER_HUB_USER}/node-app:v2"
+                    sh "docker tag node-app:v1 ${DOCKER_HUB_USER}/node-app:v4"
+                    sh "docker push ${DOCKER_HUB_USER}/node-app:v4"
                 }
             }
         }
