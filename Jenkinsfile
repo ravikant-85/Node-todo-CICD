@@ -10,7 +10,7 @@ pipeline {
 
         stage("Build Docker Image") {
             steps {
-                sh "docker build . -t node-app:v12"
+                sh "docker build . -t node-app:v8"
             }
         }
 
@@ -20,12 +20,12 @@ pipeline {
                     sh "echo '${DOCKER_HUB_PASS}' | docker login -u '${DOCKER_HUB_USER}' --password-stdin"
                     
                     // **Tag both 'latest' and 'v10'**
-                    sh "docker tag node-app:v12 ${DOCKER_HUB_USER}/node-app:latest"
-                    sh "docker tag node-app:v12 ${DOCKER_HUB_USER}/node-app:v12"
+                    sh "docker tag node-app:v8 ${DOCKER_HUB_USER}/node-app:latest"
+                    sh "docker tag node-app:v8 ${DOCKER_HUB_USER}/node-app:v8"
 
                     // **Push both 'latest' and 'v10' to DockerHub**
                     sh "docker push ${DOCKER_HUB_USER}/node-app:latest"
-                    sh "docker push ${DOCKER_HUB_USER}/node-app:v12"
+                    sh "docker push ${DOCKER_HUB_USER}/node-app:v8"
                 }
             }
         }
