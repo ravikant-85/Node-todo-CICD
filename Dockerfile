@@ -1,6 +1,6 @@
 FROM node:21.5-alpine
-WORKDIR app
-COPY . ./
+WORKDIR /app
+COPY . .
 RUN npm install
 # RUN npm run test
 EXPOSE 8081
