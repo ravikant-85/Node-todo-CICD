@@ -4,20 +4,20 @@ pipeline {
     stages{
         stage("Code"){
             steps{
-                git url: "https://github.com/LondheShubham153/node-todo-cicd.git", branch: "master"
+                git url: "https://github.com/ravikant-85/Node-todo-CICD.git", branch: "main"
             }
         }
         stage("Build & Test"){
             steps{
-                sh "docker build . -t node-app-test-new"
+                sh "docker build . -t node-app:v1"
             }
         }
         stage("Push to DockerHub"){
             steps{
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker tag node-app-test-new ${env.dockerHubUser}/node-app-test-new:latest"
-                    sh "docker push ${env.dockerHubUser}/node-app-test-new:latest" 
+                withCredentials([usernamePassword(credentialsId:"DockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                    sh "docker login -u ravikant21 -p ${env.dockerHubPass}"
+                    sh "docker tag node-app-test-new ravikant21/node-app-test-new:latest"
+                    sh "docker push ravikant21/node-app-test-new:latest" 
                 }
             }
         }
