@@ -4,4 +4,4 @@ services:
   web:
     image: "ravikant21/node-app:v8"
     ports:
-      - "8000:8081"
+      - "8000:8080"
